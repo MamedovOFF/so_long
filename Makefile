@@ -30,10 +30,10 @@ FLAGS			= -Wall -Wextra -Werror
 all:			$(NAME)
 
 $(NAME):		$(OBJ) $(HEADER)
-				$(CC) $(OBJ) -lmlx -framework OpenGL -framework AppKit -o $(NAME)
+				$(CC) $(OBJ) -Lmlx -lmlx -L/usr/lib -Imlx -lXext -lX11 -lm -lz -I${HEADER} ${LIBFT} -o $(NAME)
 
 %.o:			%.c $(HEADER)
-				$(CC)  -Wall -Wextra -Werror -I${HEADER} -c $< -o $@
+				$(CC) -I${HEADER} -c $< -o $@
 
 bonus:
 				make OBJ="$(OBJ_B)" all
